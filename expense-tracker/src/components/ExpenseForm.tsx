@@ -43,15 +43,24 @@ function ExpenseForm() {
             <form onSubmit = {handleSubmit}>
                 <label>Description:
                     <input
-                      type = "number"
-                      name = "amount"
-                      value = {inputs.amount || ""}
-                      onChange = {handleChange}
+                    type = "text"
+                    name = "description"
+                    value = {inputs.description || ""}
+                    onChange={handleChange}
+                    />
+                </label>
+                <label>Amount:
+                    <input
+                    type = "number"
+                    name = "amount"
+                    value = {inputs.amount || ""}
+                    onChange = {handleChange}
                     />
                 </label>
                 <input type = "submit" />
             </form>
 
+            {/* display expenses */}
             <div>
                 <h2>Expenses:</h2>
                 <ul>
