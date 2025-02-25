@@ -48,7 +48,7 @@ resource "aws_s3_bucket_policy" "website" {
 
 # CloudFront distribution
 resource "aws_cloudfront_distribution" "website" {
-  enabled             = true
+  enabled            = true
   is_ipv6_enabled    = true
   default_root_object = "index.html"
 
@@ -97,6 +97,39 @@ resource "aws_cloudfront_distribution" "website" {
     response_code      = 200
     response_page_path = "/index.html"
   }
+}
+
+# DynamoDB
+resource "aws_dynamodb_table" "expenses_table" {
+  name = "expenses-tracker-aizm"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key = "id"
+
+  attribute {
+    name = "id"
+    type = "S"
+  }
+
+  # Add GSI for querying by date
+  global_secondary_index {
+    name = "DateIndex"
+    hash_key = "date"
+    projection_type = "ALL"
+  }
+
+  attribute {
+    name = "date"
+    type = "S"
+  }
+
+  tags = {
+    Project = "expense-tracker"
+  }
+}
+
+# this output is for seeing the table name
+output "dynamodb_table_name" {
+  value = aws_dynamodb_table.expenses_table.name
 }
 
 # Output both URLs
