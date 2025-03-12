@@ -1,6 +1,6 @@
 # Expense Tracker
 
-A full-stack expense tracking application built with modern cloud technologies. This project demonstrates the implementation of a React frontend with cloud deployment using AWS services and infrastructure as code principles.
+A full-stack expense tracking application built with modern cloud technologies. This project demonstrates the implementation of a React frontend with cloud deployment using AWS services and infrastructure as code principles. Currently has basic functionality as it was developed for the purpose of learning about the cloud technologies.
 
 ## Architecture
 
